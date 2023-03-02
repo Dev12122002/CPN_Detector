@@ -9,55 +9,61 @@ from RegisterUi import *
 import startup
 import globalvar
 from pprint import pprint
-# from pyqtspinner.waitingspinnerwidget import QtWaitingSpinner
-import LoadingScreen
-
+from threading import *
 
 class Login(QtWidgets.QWidget):
     switch_window = QtCore.pyqtSignal()
     
     def __init__(self):
         super().__init__()
-        self.label = QtWidgets.QLabel('<font size=12>This is main app window</font>', self)
-        self.label.setGeometry(150, 150, 300, 50)
-        self.loading_screen = LoadingScreen
-
-    def login(self):
-            
+    
+    def check_login(self):
         if self.lineEdit.text() == "":
+            self.label_animation.setHidden(True)
             self.label_9.setText("email is required")
             self.label_9.setHidden(False)
             r = Timer(5.0, lambda: self.label_9.setHidden(True))
             r.start()
             return
-    
+
         if self.lineEdit_2.text() == "":
+            self.label_animation.setHidden(True)
             self.label_9.setText("password is required")
             self.label_9.setHidden(False)
             r = Timer(5.0, lambda: self.label_9.setHidden(True))
             r.start()
             return
-    
+
         user = {
             "email": self.lineEdit.text(),
             "password": self.lineEdit_2.text()
         }
-        
+
         config = Config()
         resultUser = config.get_Data_By_Fields(
             "Users", ["email", "password"], [user['email'], user['password']])
-        
+
         if len(resultUser) != 0:
             globalvar.ismain = True
             self.switch_window.emit()
-            return 
-    
+            return
+
         elif len(resultUser) == 0:
+            # self.movie.hide()
+            self.label_animation.setHidden(True)
             self.label_9.setText("email or password is\nincorrect")
             self.label_9.setHidden(False)
             r = Timer(5.0, lambda: self.label_9.setHidden(True))
             r.start()
             return
+        
+    def login(self):
+        self.label_animation.setHidden(False)
+        self.movie.start()
+        t1 = Thread(target=self.check_login)
+        t1.start()
+    
+        
     
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -99,6 +105,7 @@ class Login(QtWidgets.QWidget):
 "\n"
 "")
         self.widget.setObjectName("widget")
+        
         self.label_2 = QtWidgets.QLabel(self.widget)
         self.label_2.setGeometry(QtCore.QRect(10, 30, 280, 430))
         self.label_2.setStyleSheet("background-image: url(:/images/x-ray1.png);\n"
@@ -194,6 +201,12 @@ class Login(QtWidgets.QWidget):
         self.label_8.setStyleSheet("color:rgba(255, 255, 255, 210);")
         self.label_8.setWordWrap(False)
         self.label_8.setObjectName("label_8")
+        
+        self.label_animation = QtWidgets.QLabel(self.widget)
+        self.label_animation.setGeometry(QtCore.QRect(367, 240, 191, 60))
+        self.movie = QtGui.QMovie("loading.gif")
+        self.label_animation.setMovie(self.movie)
+        
         self.label_9 = QtWidgets.QLabel(self.widget)
         self.label_9.setGeometry(QtCore.QRect(300, 240, 191, 60))
         font = QtGui.QFont()
@@ -223,6 +236,8 @@ class Login(QtWidgets.QWidget):
         clickable(self.label_8).connect(self.goToRegister)
         self.label_9.setText(_translate("Form", "Email or Password is\nincorrect"))
         self.label_9.setHidden(True)
+        # self.label_animation.setHidden(True)
+        # self.movie.start()
 
     def goToRegister(self):
         time.sleep(0.3)
