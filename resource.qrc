@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/add-file.png</file>
+    <file>icons/cil-chevron-right.png</file>
+    <file>icons/cil-window-maximize.png</file>
+    <file>icons/download-2-24.png</file>
+    <file>icons/house-24 (1).png</file>
+    <file>icons/house-24.png</file>
+    <file>icons/icon_close.png</file>
+    <file>icons/icon_maximize.png</file>
+    <file>icons/icon_minimize.png</file>
+    <file>icons/left.png</file>
+    <file>icons/logout-24.png</file>
+    <file>icons/menu-4-24 (1).png</file>
+    <file>icons/menu-4-24.png</file>
+    <file>icons/pdf-24 (1).png</file>
+    <file>icons/pdf-24.png</file>
+    <file>icons/settings-9-24 (1).png</file>
+    <file>icons/settings-9-24.png</file>
+  </qresource>
+</RCC>

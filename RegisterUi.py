@@ -9,14 +9,17 @@ import re
 from loginUi import *
 from helper import *
 import globalvar
+from threading import *
 
 
 class Register(QtWidgets.QWidget):
     switch_window = QtCore.pyqtSignal()
-    def register(self):
+
+    def check_Register(self):
         print("Clicked")
         
         if self.lineEdit.text() == "":
+            self.label_animation.setHidden(True)
             self.label_9.setText("email is required")
             self.label_9.setHidden(False)
             r = Timer(5.0, lambda: self.label_9.setHidden(True))
@@ -24,6 +27,14 @@ class Register(QtWidgets.QWidget):
             return
     
         if self.lineEdit_2.text() == "":
+                self.label_animation.setHidden(True)
+                
+                font = QtGui.QFont()
+                font.setPointSize(10)
+                font.setBold(True)
+                font.setWeight(75)
+                self.label_10.setFont(font)
+                
                 self.label_10.setText("password is required")
                 self.label_10.setHidden(False)
                 r = Timer(5.0, lambda: self.label_10.setHidden(True))
@@ -38,6 +49,7 @@ class Register(QtWidgets.QWidget):
         config = Config()
         resultUser = config.get_Data_By_Specific_Field("Users", "email", user['email'])
         if len(resultUser) != 0:
+            self.label_animation.setHidden(True)
             print("User already exists")
             self.label_9.setText("Email already exist")
             self.label_9.setHidden(False)
@@ -48,8 +60,17 @@ class Register(QtWidgets.QWidget):
         password_pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$"
 
         if re.match(password_pattern, user['password']) is None:  # Returns None
+                self.label_animation.setHidden(True)
+                
+                font = QtGui.QFont()
+                font.setPointSize(8)
+                font.setBold(True)
+                font.setWeight(75)
+                self.label_10.setFont(font)
+                
                 print('Password must have atleast 1 uppercase, 1 lowercase and 1 number.')
-                self.label_10.setText("Must be minimum 6 digit\n alphanumeric string with atleast\n1 capital letter")
+                self.label_10.setText(
+                    "Must be minimum 6 digit\nalphanumeric string with\natleast 1 capital letter")
                 self.label_10.setHidden(False)
                 r = Timer(5.0, lambda: self.label_10.setHidden(True))
                 r.start()
@@ -59,6 +80,12 @@ class Register(QtWidgets.QWidget):
         config.insert_data('Users', user)
         globalvar.ismain = True
         self.switch_window.emit()
+        
+    def register(self):
+        self.label_animation.setHidden(False)
+        self.movie.start()
+        t1 = Thread(target=self.check_Register)
+        t1.start()
         
 
 #     def goToLogin():
@@ -210,8 +237,14 @@ class Register(QtWidgets.QWidget):
         self.label_9.setStyleSheet("color:rgba(255, 0, 0, 200);")
         self.label_9.setWordWrap(False)
         self.label_9.setObjectName("label_9")
+        
+        self.label_animation = QtWidgets.QLabel(self.widget)
+        self.label_animation.setGeometry(QtCore.QRect(367, 240, 191, 80))
+        self.movie = QtGui.QMovie("loading.gif")
+        self.label_animation.setMovie(self.movie)
+        
         self.label_10 = QtWidgets.QLabel(self.widget)
-        self.label_10.setGeometry(QtCore.QRect(310, 247, 165, 60))
+        self.label_10.setGeometry(QtCore.QRect(300, 247, 225, 60))
         font = QtGui.QFont()
         font.setPointSize(8)
         font.setBold(True)
@@ -228,7 +261,7 @@ class Register(QtWidgets.QWidget):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_4.setText(_translate("Form", "Register"))
-        self.lineEdit.setPlaceholderText(_translate("Form", "  User Name"))
+        self.lineEdit.setPlaceholderText(_translate("Form", "  Email"))
         self.lineEdit_2.setPlaceholderText(_translate("Form", "  Password"))
         self.pushButton.setText(_translate("Form", "R e g i s t e r"))
         self.pushButton.clicked.connect(self.register)
