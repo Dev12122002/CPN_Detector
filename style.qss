@@ -1,0 +1,89 @@
+#HomePage {
+		background-color: #e2e4de;
+}
+
+#icon_only {
+		/* background-color: #8798b1; */
+        background-color: #c7ccd2;
+}
+
+#icon_only > QPushButton:checked{
+    background-color: #3a3b3d;
+}
+
+#full_menu > QPushButton:checked{
+    background-color: #3a3b3d;
+    color: #fff;
+}
+
+#full_menu {
+		background-color: #c7ccd2;
+}
+
+#titlebar {
+		background-color: #fff;
+}
+
+#title {
+    color : #306;
+}
+
+/* #save_error {
+    color : #f00;
+} */
+
+#result_cpn_widget {
+    /* background-color: #a4adbe; */
+    background-color: #c7ccd2;
+}
+
+#predict_btn, #save_btn, #refresh_btn{
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+    color:rgba(255, 255, 255, 210);
+    border-radius:5px;
+}
+
+#predict_btn:hover, #save_btn:hover, #refresh_btn:hover{
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(85, 98, 112, 226), stop:1 rgba(11, 131, 120, 219));
+}
+
+#predict_btn:pressed, #save_btn:pressed, #refresh_btn:pressed{
+    /* padding-left:5px;\n"
+    padding-top:5px;\n" */
+    background-color:rgba(150, 123, 111, 255);
+}
+
+#predict_btn:disabled, #save_btn:disabled {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(138, 165, 163, 219), stop:1 rgba(87, 93, 100, 226));;
+}
+/* 
+#stackedWidget {
+    border : 2px solid black;
+} */
+
+#close_btn:hover{
+    background-color: #c7ccd2;
+}
+
+#pushButton_14:hover{
+    background-color: #fff;
+}
+
+#minimize_btn:hover {
+    background-color: #c7ccd2;
+}
+
+#name_lineEdit, #phone_lineEdit, #age_spinBox{
+    border : 1px solid ;
+    border-color : transparent transparent blue transparent;
+    border-radius: 3px;
+    padding: 4px 8px;
+    background: transparent;
+    margin-left: 10px;
+}
+
+QTableWidget::item {
+    border: 0px; 
+    padding: 5px;
+    background-color: #c7ccd2;
+}

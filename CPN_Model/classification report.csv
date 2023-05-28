@@ -1,0 +1,4 @@
+,Class Name,precision,recall,f1-score,support
+0,covid,0.98,0.96,0.97,294
+1,normal,0.90,0.94,0.92,301
+2,pneumonia,0.96,0.93,0.94,301

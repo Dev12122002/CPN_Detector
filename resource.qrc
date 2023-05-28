@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/add-file.png</file>
+    <file>icons/close-24.png</file>
+    <file>icons/download-2-24.png</file>
+    <file>icons/house-24.png</file>
+    <file>icons/house-24-light.png</file>
+    <file>icons/logout-24.png</file>
+    <file>icons/menu-4-24.png</file>
+    <file>icons/minimize24.png</file>
+    <file>icons/pdf-24.png</file>
+    <file>icons/pdf-24-light.png</file>
+    <file>icons/settings-9-24.png</file>
+    <file>icons/settings-9-24-light.png</file>
+  </qresource>
+</RCC>
