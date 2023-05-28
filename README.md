@@ -6,8 +6,11 @@ This is desktop application used to detect the Covid19, Pneumonia and Normal pat
 1) Download and extract the zip file of this project.
 
 2) Download this files from below links
-   i) if you want to use Inseption Resnet V2 model then -> https://drive.google.com/file/d/1yCas3TjE5TPwc9HpHb5NP9NQA9GbKAlJ/view?usp=drive_link
-   ii) if you want to use VGG19 model then -> https://drive.google.com/file/d/1pVDY0JXI9nreNjM8L5pklieb5N2l4Osl/view?usp=drive_link
+   1) if you want to use Inseption Resnet V2 model then
+      https://drive.google.com/file/d/1yCas3TjE5TPwc9HpHb5NP9NQA9GbKAlJ/view?usp=drive_link
+      
+   2) if you want to use VGG19 model then
+      https://drive.google.com/file/d/1pVDY0JXI9nreNjM8L5pklieb5N2l4Osl/view?usp=drive_link
  
 3) Move the downloaded file in CPN_Detector/CPN_Model directory.
 
