@@ -13,5 +13,8 @@ This is desktop application used to detect the Covid19, Pneumonia and Normal pat
 
 4) Open the terminal in root directory and write command 'python startup.py' to run the project.
 
+# Machine Learning Model
+https://colab.research.google.com/drive/1a9yaOFlKzS3z0eSw-FEDspDWP8fGKM9w?usp=sharing
+
 # Demo Video of this project
 https://github.com/Dev12122002/CPN_Detector/assets/77498007/059844a3-f252-4b82-9c09-ef3956cff18d
